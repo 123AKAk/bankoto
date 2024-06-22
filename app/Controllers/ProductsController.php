@@ -53,11 +53,11 @@ class ProductsController extends BaseController
                 if ($productModel->save($data))
                 {
                     session()->setFlashdata('success', 'Product created successfully.');
-                    return redirect()->to(base_url('product'));
+                    return redirect()->to(base_url('product/add'));
                 }
 
                 session()->setFlashdata('error', 'Failed to save Product data.');
-                return redirect()->to(base_url('product'));
+                return redirect()->to(base_url('product/add'));
             }
 
             // Print validation errors
@@ -65,7 +65,7 @@ class ProductsController extends BaseController
             session()->setFlashdata('validation_errors', $validation->getErrors());
         }
     
-        return redirect()->to(base_url('product'));
+        return redirect()->to(base_url('product/add'));
     }
 
     public function add() {

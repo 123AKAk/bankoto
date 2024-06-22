@@ -31,17 +31,18 @@
             <?php foreach ($products as $product) : ?>
                 <tr>
                     <td>
-                        <p class="fw-normal mb-1">Software engineer</p>
+                        <p class="fw-normal mb-1"><?= $product['name'] ?></p>
                     </td>
                     <td>
-                        <p class="text-muted mb-0">IT department</p>
+                        <p class="text-muted mb-0"><?= $product['title'] ?></p>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $product['description'] ?></td>
+                    <td><?= $product['category'] ?></td>
+                    <td><?= $product['tag'] ?></td>
+                    <td><?= $product['size'] ?></td>
+                    <td><?= $product['weight'] ?></td>
+                    <td><?= $product['sku_id'] ?></td>
+                    <td><?= $product['colour'] ?></td>
                     <td>
                         <a href="<?= base_url('product/view/') ?>" class="btn btn-sencondary btn-sm btn-rounded">
                             View

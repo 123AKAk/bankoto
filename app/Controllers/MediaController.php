@@ -27,7 +27,7 @@ class MediaController extends BaseController
             'name'   => 'required',
             'description' => 'required',
             'category' => 'required',
-            'image'   => 'uploaded[image]|max_size[image,1200]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]'
+            'image'   => 'uploaded[image]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]'
         ];
     
         if ($this->request->getMethod() === 'POST') {
@@ -71,6 +71,6 @@ class MediaController extends BaseController
     public function index() {
         $data['media'] = $this->mediaModel->findAll();
 
-        return view('media/index', $data);
+        return view('media', $data);
     }
 }

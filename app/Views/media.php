@@ -10,6 +10,39 @@
 
 <div class="container mt-5">
 
+    <?php
+    if (session()->getFlashData("success")) {
+    ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole! <?= session()->getFlashData("success"); ?>.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    } else if (session()->getFlashData("error")) {
+    ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>
+                Holy guacamole!
+                <?= session()->getFlashData("error"); ?>.
+            </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
+
+    <?php if (session()->getFlashdata('validation_errors')) : ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <ul>
+                <?php foreach (session()->getFlashdata('validation_errors') as $error) : ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+
+
     <div class="mb-3">
         <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-secondary float-end">Add Media</button>
     </div>
@@ -24,15 +57,15 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($media as $singleMedia) : ?>
                 <tr>
                     <td>
-                        <p class="fw-normal mb-1">Software engineer</p>
+                        <p class="fw-normal mb-1"><?= $singleMedia['name'] ?></p>
                     </td>
                     <td>
-                        <p class="text-muted mb-0">IT department</p>
+                        <p class="text-muted mb-0"><?= $singleMedia['description'] ?></p>
                     </td>
-                    <td></td>
+                    <td><?= $singleMedia['category'] ?></td>
                     <td>
                         <a href="<?= base_url('media/download/') ?>" class="btn btn-dark btn-sm btn-rounded">
                             Download
@@ -54,22 +87,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('media/store') ?>" method="post">
+                <form action="<?= base_url('media/store') ?>" method="post" enctype="multipart/form-data">
 
                     <div class="mb-3">
                         <label for="mediaName" class="form-label">Media Name</label>
-                        <input type="text" class="form-control" id="mediaName" placeholder="Media Name">
+                        <input name="name" type="text" class="form-control" id="mediaName" placeholder="Media Name">
                     </div>
 
                     <div class="mb-3">
                         <label for="Description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="Description" placeholder="Description">
+                        <input name="description" type="text" class="form-control" id="Description" placeholder="Description">
                     </div>
 
                     <!-- Category -->
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
-                        <select class="form-select" id="category" required>
+                        <select name="category" class="form-select" id="category" required>
                             <option selected disabled>Select category...</option>
                             <option value="electronics">Electronics</option>
                             <option value="clothing">Clothing</option>
@@ -80,7 +113,7 @@
 
                     <div class="mb-3">
                         <label for="file" class="form-label">File</label>
-                        <input type="file" class="form-control" id="file">
+                        <input type="file" name="image" class="form-control" id="file">
                     </div>
 
                     <!-- Submit Button -->
