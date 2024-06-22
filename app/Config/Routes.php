@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 
 service('auth')->routes($routes);
 
+$routes->get("product/add", "ProductsController::add");
 $routes->group("product", ["filter" => "auth"], function ($routes) {
     $routes->get("/", "ProductsController::index");
     $routes->get("/product/create", "ProductsController::create");
@@ -21,9 +22,5 @@ $routes->group("media", ["filter" => "auth"], function ($routes) {
     $routes->get("/media/create", "MediaController::create");
     $routes->get("/media/store", "MediaController::store");
 });
-
-
-$routes->get('/profile', 'Home::profile', ['filter' => 'auth']);
-
 
 

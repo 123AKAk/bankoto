@@ -1,4 +1,3 @@
-
 <?= $this->extend("layouts/app") ?>
 
 <?php $this->setVar('pgActive', 'Dashboard'); ?>
@@ -11,6 +10,60 @@
 
 <?= $this->section("body") ?>
 
-
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">No of Products</h5>
+                        <p class="card-text">
+                            2
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="text-decoration-none" href="<?= base_url('product') ?>">View</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">No of Media </h5>
+                        <p class="card-text">3
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="text-decoration-none" href="<?= base_url('product') ?>">View</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Views</h5>
+                        <p class="card-text">
+                            3
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="text-decoration-none" href="<?= base_url('product') ?>">View</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"> No of Downloads</h5>
+                        <p class="card-text">
+                            3
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="text-decoration-none" href="<?= base_url('product') ?>">View</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?= $this->endSection() ?>

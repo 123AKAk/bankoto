@@ -42,6 +42,10 @@ class ProductsController extends BaseController
         return redirect()->to('/products');
     }
 
+    public function add() {
+        return view('productAdd');
+    }
+
     public function index() {
         $data['products'] = $this->productModel->findAll();
 
