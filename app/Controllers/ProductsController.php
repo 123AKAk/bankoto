@@ -19,27 +19,53 @@ class ProductsController extends BaseController
         $this->productModel = new ProductModel();
     }
 
-    public function create() {
-        return view('products/create');
-    }
-
     public function store() {
 
-        $data = [
-            'name' => $this->request->getPost('name'),
-            'title' => $this->request->getPost('title'),
-            'description' => $this->request->getPost('description'),
-            'category' => $this->request->getPost('category'),
-            'tag' => $this->request->getPost('tag'),
-            'size' => $this->request->getPost('size'),
-            'weight' => $this->request->getPost('weight'),
-            'sku_id' => $this->request->getPost('sku_id'),
-            'colour' => $this->request->getPost('colour'),
+        helper(['form']);
+        $productModel = $this->productModel;
+
+        $rules = [
+            'name'   => 'required',
+            'title' => 'required',
+            'description'   => 'required',
+            'category' => 'required',
+            'tag'   => 'required',
+            'size' => 'required',
+            'sku_id'   => 'required',
+            'colour' => 'required',
         ];
+    
+        if ($this->request->getMethod() === 'POST') {
+            if ($this->validate($rules)) {
+ 
+                $data = [
+                    'name' => $this->request->getPost('name'),
+                    'title' => $this->request->getPost('title'),
+                    'description' => $this->request->getPost('description'),
+                    'category' => $this->request->getPost('category'),
+                    'tag' => $this->request->getPost('tag'),
+                    'size' => $this->request->getPost('size'),
+                    'weight' => $this->request->getPost('weight'),
+                    'sku_id' => $this->request->getPost('sku_id'),
+                    'colour' => $this->request->getPost('colour'),
+                ];
 
-        $this->productModel->save($data);
+                if ($productModel->save($data))
+                {
+                    session()->setFlashdata('success', 'Product created successfully.');
+                    return redirect()->to(base_url('product'));
+                }
 
-        return redirect()->to('/products');
+                session()->setFlashdata('error', 'Failed to save Product data.');
+                return redirect()->to(base_url('product'));
+            }
+
+            // Print validation errors
+            $validation = \Config\Services::validation();
+            session()->setFlashdata('validation_errors', $validation->getErrors());
+        }
+    
+        return redirect()->to(base_url('product'));
     }
 
     public function add() {

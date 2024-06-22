@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use Config\Services;
 
+use App\Models\MediaModel;
+use App\Models\ProductModel;
+
 class Home extends BaseController
 {
     public function index()
@@ -11,12 +14,19 @@ class Home extends BaseController
         // Check if user is logged in
         if (auth()->loggedIn())
         {
+            $productModel = new ProductModel();
+            $mediaModel = new MediaModel();
+
             $user = auth()->user();
 
             // Pass user data to view
             $data = [
                 'userId' => $user->user_id,
                 'userName' => $user->username,
+                'product_count' => $productModel->countAllResults(),
+                'media_count' => $mediaModel->countAllResults(),
+                'product_views' => 0,
+                'downloads' => 0,
             ];
 
             return view('dashboard', $data);

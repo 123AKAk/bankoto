@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class MediaModel extends Model
 {
-    protected $table            = 'medias';
+    protected $table            = 'media';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

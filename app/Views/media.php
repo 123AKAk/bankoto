@@ -1,8 +1,8 @@
 <?= $this->extend("layouts/app") ?>
 
-<?php $this->setVar('pgActive', 'Product'); ?>
+<?php $this->setVar('pgActive', 'Media'); ?>
 
-<?= $this->section('title') ?> Product <?= $this->endSection() ?>
+<?= $this->section('title') ?> Media <?= $this->endSection() ?>
 
 
 
@@ -10,20 +10,16 @@
 
 <div class="container mt-5">
 
-    <a href="<?= base_url('product/add') ?>" class="btn btn-secondary float-end">Add Product</a>
+    <div class="mb-3">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-secondary float-end">Add Media</button>
+    </div>
 
     <table class="table align-middle mb-0 bg-white mt-3">
         <thead class="bg-light">
             <tr>
                 <th>Name</th>
-                <th>Title</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>Tag</th>
-                <th>Size</th>
-                <th>Weight</th>
-                <th>Sku id</th>
-                <th>colour</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,14 +33,9 @@
                         <p class="text-muted mb-0">IT department</p>
                     </td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td>
-                        <a href="<?= base_url('product/view/') ?>" class="btn btn-sencondary btn-sm btn-rounded">
-                            View
+                        <a href="<?= base_url('media/download/') ?>" class="btn btn-dark btn-sm btn-rounded">
+                            Download
                         </a>
                     </td>
                 </tr>

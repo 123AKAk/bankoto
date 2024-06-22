@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title">No of Products</h5>
                         <p class="card-text">
-                            2
+                            <?= $product_count ?>
                         </p>
                     </div>
                     <div class="card-footer">
@@ -29,7 +29,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">No of Media </h5>
-                        <p class="card-text">3
+                        <p class="card-text"><?= $media_count ?>
                         </p>
                     </div>
                     <div class="card-footer">
@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Product Views</h5>
                         <p class="card-text">
-                            3
+                            <?= $product_views ?>
                         </p>
                     </div>
                     <div class="card-footer">
@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <h5 class="card-title"> No of Downloads</h5>
                         <p class="card-text">
-                            3
+                            <?= $downloads ?>
                         </p>
                     </div>
                     <div class="card-footer">
